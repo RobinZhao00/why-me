@@ -1,0 +1,7 @@
+{
+  "extends": "../tsconfig.json",  // 扩展根目录的 tsconfig
+  "compilerOptions": {
+    "module": "CommonJS"
+  },
+  "include": ["./**/*.ts"]
+}
