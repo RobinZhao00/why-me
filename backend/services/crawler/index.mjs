@@ -1,8 +1,6 @@
 import puppeteer from 'puppeteer';
 import { fetchJobList } from './fetchList.mjs';
 import { fetchJobDetails } from './fetchDetail.mjs';
-import { saveToJson } from './storage.mjs';
-import { initPageWithCookies } from './initPageWithCookies.mjs';
 
 const browser = await puppeteer.launch({
   // headless: 'new'
@@ -12,7 +10,7 @@ const browser = await puppeteer.launch({
 });
 
 try {
-  const jobInfoList = await fetchJobList({ browser, maxPages: 50 });
+  const jobInfoList = await fetchJobList({ browser, maxPages: 1 });
   await fetchJobDetails({ browser, jobInfoList });
 } catch (error) {
   console.error('🛑 程序异常：', error);

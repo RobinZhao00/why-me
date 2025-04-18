@@ -19,6 +19,7 @@ const fetchJobDetail = async (browser, url, retry = 3) => {
         ...content
       };
     } catch (err) {
+      console.log('err', err);
       console.warn(`⚠️ 抓取失败（第 ${i + 1} 次尝试）：${url}`);
     } finally {
       await page.close();

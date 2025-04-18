@@ -1,30 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ESNext",                           // 目标是 ESNext，支持现代 JavaScript 语法
-    "module": "ESNext",                           // 使用 ES 模块
-    "moduleResolution": "Node",                   // 模块解析策略
-    "esModuleInterop": true,                      // 启用 ES 和 CommonJS 模块的兼容
-    "strict": true,                               // 启用所有严格类型检查
-    "skipLibCheck": true,                         // 跳过库文件的类型检查，提升性能
-    "forceConsistentCasingInFileNames": true,     // 确保文件名大小写一致
-    "baseUrl": ".",                               // 基础目录为根目录
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["frontend/*"],                      // 将 @/ 映射到 frontend/
-      "#/*": ["backend/*"]                        // 将 #/ 映射到 backend/
+      "@/*": ["frontend/*"],
+      "#/*": ["backend/*"]
     },
-    "resolveJsonModule": true,                    // 支持解析 `.json` 文件
-    "isolatedModules": true,                      // 启用单独模块编译
-    "allowJs": true,                              // 允许编译 JS 文件
-    "jsx": "react",                               // 支持 JSX 编译（适用于前端）
-    "outDir": "./dist"                            // 编译输出目录（如果需要）
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
-  "include": [
-    "frontend",                                   // 包含 frontend 目录
-    "backend",                                    // 包含 backend 目录
-    "eslint.config.mjs"                           // 包含 ESLint 配置文件
-  ],
-  "exclude": [
-    "node_modules",                               // 排除 node_modules
-    "dist"                                        // 排除编译输出目录
-  ]
+  "exclude": ["node_modules", "dist"]
 }

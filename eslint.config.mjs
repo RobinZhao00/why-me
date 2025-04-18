@@ -1,38 +1,37 @@
-import { defineConfig } from "eslint-define-config";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import { FlatCompat } from "@eslint/eslintrc";
+import { globalIgnores } from "eslint/config";
 
-export default defineConfig({
-  parser: "@typescript-eslint/parser",     // 使用 TypeScript 解析器
-  parserOptions: {
-    project: "./tsconfig.json",            // 指定 tsconfig 文件
-    tsconfigRootDir: __dirname
-  },
-  extends: [
-    "eslint:recommended",                   // 使用 ESLint 推荐规则
-    "plugin:@typescript-eslint/recommended" // 使用 TypeScript 推荐规则
-  ],
-  plugins: ["@typescript-eslint"],
-  env: {
-    node: true,                             // Node 环境
-    browser: true,                          // 浏览器环境（适用于前端）
-    es2021: true
-  },
-  rules: {
-    "no-console": "warn",                   // 控制控制台输出
-    "@typescript-eslint/no-explicit-any": "off", // 关闭 any 类型警告
-    // 可根据项目需要添加更多自定义规则
-  },
-  overrides: [
-    {
-      files: ["frontend/**/*.{ts,tsx}"],    // 仅对 frontend 目录下的 ts/tsx 文件生效
-      parserOptions: {
-        project: "./frontend/tsconfig.json"
-      }
-    },
-    {
-      files: ["backend/**/*.{ts}"],         // 仅对 backend 目录下的 ts 文件生效
-      parserOptions: {
-        project: "./backend/tsconfig.json"
-      }
-    }
-  ]
+// 获取当前文件的目录路径
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+// 创建 FlatCompat 实例
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
 });
+
+// ESLint 配置
+const eslintConfig = [
+  globalIgnores(['frontend/dist/','frontend/.next/', 'node_modules', '.history', 'dist']),
+  {
+    // 忽略的文件和文件夹
+    // 匹配的文件类型
+    files: ["**/*.{js,mjs,cjs,ts,tsx}"],
+  },
+  ...compat.config({
+    // 继承的配置
+    extends: ["next/core-web-vitals", "next/typescript"],
+    // 自定义规则
+    rules: {
+      "@next/next/no-html-link-for-pages": ["error", "frontend/src/app"],
+      'react/no-unescaped-entities': 'off', // 关闭未转义实体的警告
+      '@next/next/no-page-custom-font': 'off', // 关闭自定义字体的警告
+      'no-console': 'warn', // 将 console 警告级别设置为警告
+    },
+  })
+];
+
+// 导出 ESLint 配置
+export default eslintConfig;

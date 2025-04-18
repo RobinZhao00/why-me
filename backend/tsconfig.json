@@ -1,7 +1,12 @@
 {
-  "extends": "../tsconfig.json",  // 扩展根目录的 tsconfig
+  "extends": "../tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS"
+    "outDir": "../dist/backend",
+    "rootDir": "./",
+    "module": "CommonJS",
+    "resolveJsonModule": true,
+    "isolatedModules": true
   },
-  "include": ["./**/*.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
 }

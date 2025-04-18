@@ -1,7 +1,13 @@
+"use client"
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useEffect } from "react";
 
 export default function Home() {
+  console.log('aaaa')
+  useEffect(() => {
+    debugger
+  })
   return (
     <div className={styles.page}>
       <main className={styles.main}>

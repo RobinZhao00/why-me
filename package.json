@@ -1,19 +1,26 @@
 {
-  "name": "frontend",
+  "name": "why-me",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev:frontend": "cd frontend && next dev",
     "build:frontend": "cd frontend && next build",
     "start:frontend": "cd frontend && next start",
+    "dev:backend": "cd backend && nodemon",
+    "build:backend": "tsc -p backend/tsconfig.json",
+    "start:backend": "node dist/backend/app.js",
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
-    "dev:backend": "nodemon",
-    "lint": "eslint \"{frontend,backend}/**/*.{ts,tsx}\"",
-    "lint:fix": "eslint \"{frontend,backend}/**/*.{ts,tsx}\" --fix",
+    "build": "npm run build:frontend && npm run build:backend",
+    "lint": "eslint \"{frontend,backend}/**/*.{js,mjs,cjs,ts,tsx}\"",
+    "lint:fix": "eslint \"{frontend,backend}/**/*.{js,mjs,cjs,ts,tsx}\" --fix",
     "crawl": "ts-node backend/services/crawler/index.mjs"
   },
   "dependencies": {
+    "@ant-design/cssinjs": "^1.23.0",
+    "@ant-design/nextjs-registry": "^1.0.2",
+    "@ant-design/v5-patch-for-react-19": "^1.0.3",
     "@koa/router": "^13.1.0",
+    "antd": "^5.24.6",
     "cli-progress": "^3.12.0",
     "koa": "^2.16.1",
     "next": "^15.3.0",
@@ -23,17 +30,25 @@
     "user-agents": "^1.1.507"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.24.0",
+    "@rushstack/eslint-patch": "^1.11.0",
     "@types/koa": "^2.15.0",
     "@types/koa__router": "^12.0.4",
     "@types/node": "^20.17.30",
     "@types/react": "^19.1.1",
-    "@types/react-dom": "^19",
+    "@types/react-dom": "^19.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.30.1",
+    "@typescript-eslint/parser": "^8.30.1",
     "concurrently": "^9.1.2",
-    "eslint": "^9",
-    "eslint-config-next": "15.3.0",
+    "eslint": "^9.24.0",
+    "eslint-config-next": "^15.3.1",
+    "eslint-define-config": "^2.1.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.30.1"
   }
 }

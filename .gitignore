@@ -42,3 +42,5 @@ yarn-error.log*
 
 frontend/.next/
 .history
+frontend/dist/
+dist
