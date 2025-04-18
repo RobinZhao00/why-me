@@ -21,7 +21,7 @@ deploy_project() {
     if [ "$USE_T_MODE" == "true" ]; then
         ROOT_DIR="/Users/zhaoyu/WorkSpace/var/www"
     else
-        ROOT_DIR="/root"
+        ROOT_DIR="/root/projects"
     fi
 
     # 从 Git 仓库 URL 提取项目名称
